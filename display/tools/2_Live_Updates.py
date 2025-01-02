@@ -54,9 +54,40 @@ def createDataFrame():
 if "earthquake_data" not in st.session_state:
     st.session_state.earthquake_data = pd.DataFrame() # Empty dataframe to start with.
 
+st.sidebar.markdown('''
+# Sections
+<a href="#latest-sorted-by-date-asc" style="
+    display: inline-block;
+    background: linear-gradient(135deg, #FFA726, #FB8C00);
+    color: #FFF;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    ">Live Updates</a>
+<a href="#downloadable-datasets-location-mapping" style="
+    display: inline-block;
+    background: linear-gradient(135deg, #FFA726, #FB8C00);
+    color: #FFF;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    ">Location Map</a>
+''', unsafe_allow_html=True)
+
 st.title("Earthquake Live Updates [Last 30 days] & Mapping")
 st.caption("Refreshed Daily")
 st.divider()
+
 st.markdown("### Latest sorted by date (asc)")
 earthquake_data = createDataFrame()
 st.session_state.earthquake_data = earthquake_data
