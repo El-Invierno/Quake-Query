@@ -8,10 +8,12 @@ from langchain_core.output_parsers import StrOutputParser
 st.title("QuakeBot")
 st.divider()
 
+os.environ['OPENAI_API_KEY'] = st.secrets.openai.OPENAI_API_KEY
+
 if "openai_model" not in st.session_state:
     st.session_state.openai_model = "gpt-4o-mini"
 
-model = ChatOpenAI(model=st.session_state.openai_model,api_key=st.secrets.openai.OPENAI_API_KEY)
+model = ChatOpenAI(model=st.session_state.openai_model)
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
 url = st.secrets.qdrant.url
 api_key = st.secrets.qdrant.api_key
