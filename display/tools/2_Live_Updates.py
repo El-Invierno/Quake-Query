@@ -45,22 +45,8 @@ def createDataFrame():
             }
             for feature in features
         ])
-
-        st.session_state.earthquake_data = earthquake_data
-
         print(earthquake_data)
-
-        for _,row in earthquake_data.iterrows():
-            with st.expander(f"{row['time']} - {row['title']} - {row['magnitude']}"):
-                st.markdown(f"""
-                    ### {row['title']}
-                    - **Location:** {row['place']}
-                    - **Magnitude:** {row['magnitude']}
-                    - **Coordinates:** {row['latitude']}, {row['longitude']}
-                    - **Time:** {row['time']}
-                    - [View More Details]({row['url']})
-                """)
-        st.dataframe(earthquake_data)
+        return earthquake_data
 
     else:
         print(f"Failed to fetch data! Status code: {response.status_code}")
@@ -70,6 +56,18 @@ if "earthquake_data" not in st.session_state:
 
 st.title("Earthquake Live Updates [Last 30 days]")
 st.divider()
-createDataFrame()
+earthquake_data = createDataFrame()
+st.session_state.earthquake_data = earthquake_data
+for _,row in earthquake_data.iterrows():
+    with st.expander(f"{row['time']} - {row['title']} - {row['magnitude']}"):
+        st.markdown(f"""
+            ### {row['title']}
+            - **Location:** {row['place']}
+            - **Magnitude:** {row['magnitude']}
+            - **Coordinates:** {row['latitude']}, {row['longitude']}
+            - **Time:** {row['time']}
+            - [View More Details]({row['url']})
+        """)
+st.dataframe(earthquake_data)
 print(st.session_state.earthquake_data)
 st.map(st.session_state.earthquake_data, latitude="latitude", longitude="longitude", size=100000,color="#FFA50080")
