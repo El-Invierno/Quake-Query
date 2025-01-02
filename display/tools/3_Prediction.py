@@ -23,7 +23,7 @@ with st.container(border=False):
                         result = loaded_reg.predict(inp)
                         st.success(f"Prediction magnitude: {round(result[0],2)}")
     with col2:
-        with st.container(border=False):
+        with st.container(border=True):
             st.subheader("SVM")
             st.write("Enter data into all fields")
             with st.form("SVM Form"):
@@ -60,7 +60,7 @@ legend_data = {
 }
 df = pd.DataFrame(legend_data)
 st.subheader("Classifier Models")
-with st.container(border=True):
+with st.container(border=False):
     with st.container(border=True):
         st.subheader("Naive Bayes")
         st.write("Used for categorical classification")
