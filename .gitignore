@@ -40,7 +40,7 @@ Desktop.ini
 
 # Streamlit-specific files
 .streamlit/secrets.toml
-.streamlit/config.toml
+# .streamlit/config.toml
 
 # Python packages
 *.egg-info/
