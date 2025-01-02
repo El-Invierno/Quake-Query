@@ -9,6 +9,7 @@ __pycache__/
 env/
 venv/
 .venv/
+.venv-3.12.2/
 ENV/
 .VENV/
 env.bak/
