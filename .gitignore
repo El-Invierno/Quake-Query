@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+env/
+venv/
+.venv/
+ENV/
+.VENV/
+env.bak/
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Cache and logs
+*.log
+*.cache/
+*.pyc
+.DS_Store
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-generated files
+Thumbs.db
+Desktop.ini
+*.swp
+*.temp
+*.tmp
+*.bak
+
+# Streamlit-specific files
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# Python packages
+*.egg-info/
+build/
+dist/
+
+# Test outputs
+coverage.xml
+*.cover
+*.coverage
+*.pytest_cache/
+.nox/
+.pytest_cache/
+
+# Dependency files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Logs and debug
+*.log
+*.out
+
+# Data files
+# *.csv
+*.tsv
+*.sqlite
+*.db
+*.json
+
+# Secrets
+.env
+.env.local
