@@ -5,7 +5,7 @@ import pandas as pd
 st.title("Eathquake Predictor")
 st.divider()
 st.subheader("Regressor Models")
-with st.container(border=True):
+with st.container(border=False):
     col1,col2,col3 = st.columns(3)
     with col1:
         with st.container(border=True):
@@ -23,7 +23,7 @@ with st.container(border=True):
                         result = loaded_reg.predict(inp)
                         st.success(f"Prediction magnitude: {round(result[0],2)}")
     with col2:
-        with st.container(border=True):
+        with st.container(border=False):
             st.subheader("SVM")
             st.write("Enter data into all fields")
             with st.form("SVM Form"):
