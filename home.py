@@ -26,15 +26,4 @@ pg = st.navigation(
         "Tools" : [live_updates_page,prediction_page,chatbot_page]
     }
 )
-pg.run()  
-
-def delSession():
-    time.sleep(5)
-    # Close streamlit browser tab
-    keyboard.press_and_release('ctrl+w')
-    # Terminate streamlit python process
-    pid = os.getpid()
-    p = psutil.Process(pid)
-    p.terminate()
-
-st.sidebar.button("Kill Session",key="kill_button",on_click=delSession)
+pg.run()
