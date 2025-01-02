@@ -17,7 +17,7 @@ def converttime(linuxtime):
 
 print(startime_str, endtime_str)
 
-@st.cache_data
+@st.cache_data(ttl="1d")
 def createDataFrame():
     url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
     params = {
@@ -54,8 +54,10 @@ def createDataFrame():
 if "earthquake_data" not in st.session_state:
     st.session_state.earthquake_data = pd.DataFrame() # Empty dataframe to start with.
 
-st.title("Earthquake Live Updates [Last 30 days]")
+st.title("Earthquake Live Updates [Last 30 days] & Mapping")
+st.caption("Refreshed Daily")
 st.divider()
+st.markdown("### Latest sorted by date (asc)")
 earthquake_data = createDataFrame()
 st.session_state.earthquake_data = earthquake_data
 for _,row in earthquake_data.iterrows():
@@ -68,6 +70,11 @@ for _,row in earthquake_data.iterrows():
             - **Time:** {row['time']}
             - [View More Details]({row['url']})
         """)
+
+st.divider()
+
+st.markdown("### Downloadable datasets & Location Mapping")
+
 st.dataframe(earthquake_data)
 print(st.session_state.earthquake_data)
 st.map(st.session_state.earthquake_data, latitude="latitude", longitude="longitude", size=100000,color="#FFA50080")

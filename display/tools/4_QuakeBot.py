@@ -43,20 +43,20 @@ if "messages" not in st.session_state:
         Respond with accuracy and clarity, focusing solely on earthquakes and related natural disasters.
 '''}]
     
-def call_chain(messages):
+def call_chain(messages): # message generator.
     chain = model | StrOutputParser()
-    response = chain.invoke(messages)
-    return response
+    for chunk in chain.stream(messages):
+        yield(chunk)
 
-for message in st.session_state.messages:
+for message in st.session_state.messages: # chat history displayed.
     with st.chat_message(message['role']):
         st.markdown(message['content'])
 
 if prompt := st.chat_input("Enter your query regarding earthquakes"):
     st.session_state.messages.append({'role' : 'user', 'content' : prompt})
+
     with st.chat_message("user"):
         st.markdown(prompt)
     with st.chat_message('ai'):
-        result = call_chain(st.session_state.messages)
-        st.markdown(result)
+        result = st.write_stream(call_chain(st.session_state.messages))
     st.session_state.messages.append({'role' : 'ai', 'content' : result})
