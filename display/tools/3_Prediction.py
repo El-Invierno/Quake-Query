@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-st.title("Eathquake Predictor")
+st.title("Earthquake Predictor")
 st.divider()
 st.subheader("Regressor Models")
 with st.container(border=False):
@@ -65,8 +65,8 @@ with st.container(border=False):
         st.subheader("Naive Bayes")
         st.write("Used for categorical classification")
         with st.form("Naive Bayes Form"):
-            lat = st.number_input("Latitude",-2.00,2.00,0.00)
-            long = st.number_input("Longitude",-2.00,2.00,0.00)
+            lat = st.number_input("Latitude",-90.00,90.00,0.00)
+            long = st.number_input("Longitude",-180.00,180.00,0.00)
             stations = st.number_input("No of Stations",0,200,0)
             if st.form_submit_button("Predict"):
                     with open("./data/aiModel/naive_bayes_model.pkl", "rb") as file:
